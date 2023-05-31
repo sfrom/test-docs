@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.5.1" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.7.101.11" />
+    <PackageReference Include="core-logger" Version="2.0.4" />
+    <PackageReference Include="core-notifier" Version="2.0.0" />
+    <PackageReference Include="core-tool-common" Version="2.0.37" />
+    <PackageReference Include="Handlebars.Net.Extension.Json" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acies.Docs.Models\Acies.Docs.Models.csproj" />
+  </ItemGroup>
+
+</Project>

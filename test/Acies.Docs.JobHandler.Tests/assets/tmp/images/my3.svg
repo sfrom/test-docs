@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -1900 1100 2000">
+	<symbol id="MeasureArrow" width="100" height="100" viewBox="0 -20 100 100">
+		<path d="M0 0 L50 20 L50 -20 Z" />
+	</symbol>
+	<symbol id="MeasureCircle" width="40" height="40" viewBox="-20 -20 40 40">
+		<circle cx="0" cy="0" r="20" />
+	</symbol>
+	<filter id="blurfilter" width="100%" height="100%">
+		<feGaussianBlur stdDeviation="10" />
+	</filter>
+	<g data-frameid="0">
+		<path class="frame" data-name="OVK." data-title="TA-KOU-120S" data-coating="TR9010" data-points="800,1500 : 800,1458 : 0,1458 : 0,1500 : 800,1500" d="M800 -1500 L800 -1458 L0 -1458 L0 -1500 L800 -1500 Z" />
+		<path class="frame" data-name="UNK." data-title="TA-KUU-120S" data-coating="TR9010" data-points="0,0 : 0,42 : 800,42 : 800,0 : 0,0" d="M0 -0 L0 -42 L800 -42 L800 -0 L0 -0 Z" />
+		<path class="frame" data-name="PS10." data-title="TA-PVU-096K" data-coating="TR9010" data-points="42,918.666687011719 : 42,976.666687011719 : 758,976.666687011719 : 758,918.666687011719 : 42,918.666687011719" d="M42 -918.666687011719 L42 -976.666687011719 L758 -976.666687011719 L758 -918.666687011719 L42 -918.666687011719 Z" />
+		<path class="frame" data-name="HSK." data-title="TA-KHU-120K" data-coating="TR9010" data-points="800,42 : 758,42 : 758,1458 : 800,1458 : 800,42" d="M800 -42 L758 -42 L758 -1458 L800 -1458 L800 -42 Z" />
+		<path class="frame" data-name="VSK." data-title="TA-KVU-120K" data-coating="TR9010" data-points="0,1458 : 42,1458 : 42,42 : 0,42 : 0,1458" d="M0 -1458 L42 -1458 L42 -42 L0 -42 L0 -1458 Z" />
+		<path class="effekt-frame" data-name="OVK." data-title="TA-KOU-120S" data-coating="TR9010" data-points="800,1500 : 800,1474 : 1.1368683772161603E-13,1474 : 1.1368683772161603E-13,1500 : 800,1500" d="M800 -1500 L800 -1474 L1.1368683772161603E-13 -1474 L1.1368683772161603E-13 -1500 L800 -1500 Z" />
+		<path class="effekt-frame" data-name="UNK." data-title="TA-KUU-120S" data-coating="TR9010" data-points="0,0 : 0,26 : 799.9999999999999,26 : 799.9999999999999,0 : 0,0" d="M0 -0 L0 -26 L799.9999999999999 -26 L799.9999999999999 -0 L0 -0 Z" />
+		<path class="effekt-frame" data-name="PS10." data-title="TA-PVU-096K" data-coating="TR9010" data-points="26,934.666687011719 : 26,960.666687011719 : 774,960.666687011719 : 774,934.666687011719 : 26,934.666687011719" d="M26 -934.666687011719 L26 -960.666687011719 L774 -960.666687011719 L774 -934.666687011719 L26 -934.666687011719 Z" />
+		<path class="effekt-frame" data-name="HSK." data-title="TA-KHU-120K" data-coating="TR9010" data-points="799.9999999999999,26 : 774,26 : 774,1474 : 800,1474 : 799.9999999999999,26" d="M799.9999999999999 -26 L774 -26 L774 -1474 L800 -1474 L799.9999999999999 -26 Z" />
+		<path class="effekt-frame" data-name="VSK." data-title="TA-KVU-120K" data-coating="TR9010" data-points="1.1368683772161603E-13,1474 : 26,1474 : 26,26 : 0,26 : 1.1368683772161603E-13,1474" d="M1.1368683772161603E-13 -1474 L26 -1474 L26 -26 L0 -26 L1.1368683772161603E-13 -1474 Z" />
+	</g>
+	<g data-frameid="1">
+		<path class="sash" data-name="HSR." data-title="TA-VHU-055K" data-coating="TR9010" data-points="770,30 : 715,30 : 715,930.666687011719 : 770,930.666687011719 : 770,30" d="M770 -30 L715 -30 L715 -930.666687011719 L770 -930.666687011719 L770 -30 Z" />
+		<path class="sash" data-name="OVR." data-title="TA-VOU-055K" data-coating="TR9010" data-points="715,930.666687011719 : 715,875.666687011719 : 85,875.666687011719 : 85,930.666687011719 : 715,930.666687011719" d="M715 -930.666687011719 L715 -875.666687011719 L85 -875.666687011719 L85 -930.666687011719 L715 -930.666687011719 Z" />
+		<path class="sash" data-name="UNR." data-title="TA-VUU-055K" data-coating="TR9010" data-points="85,30 : 85,85 : 715,85 : 715,30 : 85,30" d="M85 -30 L85 -85 L715 -85 L715 -30 L85 -30 Z" />
+		<path class="sash" data-name="VSR." data-title="TA-VVU-055K" data-coating="TR9010" data-points="30,930.666687011719 : 85,930.666687011719 : 85,30 : 30,30 : 30,930.666687011719" d="M30 -930.666687011719 L85 -930.666687011719 L85 -30 L30 -30 L30 -930.666687011719 Z" />
+		<path class="clearances" data-name="1:1" data-coating="GL-224E04" data-points="69,69 : 731,69 : 731,891.666687011719 : 69,891.666687011719 : 69,69" data-glassarea="0.533 m2" d="M69 -69 L731 -69 L731 -891.666687011719 L69 -891.666687011719 L69 -69 Z" />
+		<path class="clearances-overlay" data-filltype="Glass" data-name="1:1" data-coating="GL-224E04" data-points="69,69 : 731,69 : 731,891.666687011719 : 69,891.666687011719 : 69,69" data-glassarea="0.533 m2" d="M69 -69 L731 -69 L731 -891.666687011719 L69 -891.666687011719 L69 -69 Z" />
+		<path class="effekt-sash" data-name="HSR." data-title="TA-VHU-055K" data-coating="TR9010" data-points="769.9999999999999,30 : 731,30 : 731,930.6666870117191 : 770,930.6666870117191 : 769.9999999999999,30" d="M769.9999999999999 -30 L731 -30 L731 -930.6666870117191 L770 -930.6666870117191 L769.9999999999999 -30 Z" />
+		<path class="effekt-sash" data-name="OVR." data-title="TA-VOU-055K" data-coating="TR9010" data-points="731,930.6666870117191 : 731,891.666687011719 : 69,891.666687011719 : 69,930.666687011719 : 731,930.6666870117191" d="M731 -930.6666870117191 L731 -891.666687011719 L69 -891.666687011719 L69 -930.666687011719 L731 -930.6666870117191 Z" />
+		<path class="effekt-sash" data-name="UNR." data-title="TA-VUU-055K" data-coating="TR9010" data-points="69,29.999999999999886 : 69,69 : 731,69 : 731,30 : 69,29.999999999999886" d="M69 -29.999999999999886 L69 -69 L731 -69 L731 -30 L69 -29.999999999999886 Z" />
+		<path class="effekt-sash" data-name="VSR." data-title="TA-VVU-055K" data-coating="TR9010" data-points="30.000000000000114,930.666687011719 : 69,930.666687011719 : 69,29.999999999999886 : 30,29.999999999999886 : 30.000000000000114,930.666687011719" d="M30.000000000000114 -930.666687011719 L69 -930.666687011719 L69 -29.999999999999886 L30 -29.999999999999886 L30.000000000000114 -930.666687011719 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="731,84 : 69,84 : 69,69 : 731,69" d="M731 -84 L69 -84 L69 -69 L731 -69 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="716,876.666687011719 : 716,84 : 731,84 : 731,891.666687011719" d="M716 -876.666687011719 L716 -84 L731 -84 L731 -891.666687011719 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="84,876.666687011719 : 716,876.666687011719 : 731,891.666687011719 : 69,891.666687011719" d="M84 -876.666687011719 L716 -876.666687011719 L731 -891.666687011719 L69 -891.666687011719 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="84,84 : 84,876.666687011719 : 69,891.666687011719 : 69,84" d="M84 -84 L84 -876.666687011719 L69 -891.666687011719 L69 -84 Z" />
+		<polyline class="opening out" points="30 -29.999999999999886 770 -480.33334350585955 30 -930.666687011719" />
+	</g>
+	<g data-frameid="2">
+		<path class="sash" data-name="HSR." data-title="TA-VHU-055K" data-coating="TR9010" data-points="770,964.666687011719 : 715,964.666687011719 : 715,1470 : 770,1470 : 770,964.666687011719" d="M770 -964.666687011719 L715 -964.666687011719 L715 -1470 L770 -1470 L770 -964.666687011719 Z" />
+		<path class="sash" data-name="OVR." data-title="TA-VOU-055K" data-coating="TR9010" data-points="715,1470 : 715,1415 : 85,1415 : 85,1470 : 715,1470" d="M715 -1470 L715 -1415 L85 -1415 L85 -1470 L715 -1470 Z" />
+		<path class="sash" data-name="UNR." data-title="TA-VUU-055K" data-coating="TR9010" data-points="85,964.666687011719 : 85,1019.66668701172 : 715,1019.66668701172 : 715,964.666687011719 : 85,964.666687011719" d="M85 -964.666687011719 L85 -1019.66668701172 L715 -1019.66668701172 L715 -964.666687011719 L85 -964.666687011719 Z" />
+		<path class="sash" data-name="VSR." data-title="TA-VVU-055K" data-coating="TR9010" data-points="30,1470 : 85,1470 : 85,964.666687011719 : 30,964.666687011719 : 30,1470" d="M30 -1470 L85 -1470 L85 -964.666687011719 L30 -964.666687011719 L30 -1470 Z" />
+		<path class="clearances" data-name="2:1" data-coating="GL-224E04" data-points="69,1003.66668701172 : 731,1003.66668701172 : 731,1431 : 69,1431 : 69,1003.66668701172" data-glassarea="0.274 m2" d="M69 -1003.66668701172 L731 -1003.66668701172 L731 -1431 L69 -1431 L69 -1003.66668701172 Z" />
+		<path class="clearances-overlay" data-filltype="Glass" data-name="2:1" data-coating="GL-224E04" data-points="69,1003.66668701172 : 731,1003.66668701172 : 731,1431 : 69,1431 : 69,1003.66668701172" data-glassarea="0.274 m2" d="M69 -1003.66668701172 L731 -1003.66668701172 L731 -1431 L69 -1431 L69 -1003.66668701172 Z" />
+		<path class="effekt-sash" data-name="HSR." data-title="TA-VHU-055K" data-coating="TR9010" data-points="769.9999999999999,964.666687011719 : 731,964.666687011719 : 731,1470 : 770,1470 : 769.9999999999999,964.666687011719" d="M769.9999999999999 -964.666687011719 L731 -964.666687011719 L731 -1470 L770 -1470 L769.9999999999999 -964.666687011719 Z" />
+		<path class="effekt-sash" data-name="OVR." data-title="TA-VOU-055K" data-coating="TR9010" data-points="731,1470 : 731,1431 : 69,1431 : 69,1470 : 731,1470" d="M731 -1470 L731 -1431 L69 -1431 L69 -1470 L731 -1470 Z" />
+		<path class="effekt-sash" data-name="UNR." data-title="TA-VUU-055K" data-coating="TR9010" data-points="69,964.666687011719 : 69,1003.66668701172 : 731,1003.66668701172 : 731,964.666687011719 : 69,964.666687011719" d="M69 -964.666687011719 L69 -1003.66668701172 L731 -1003.66668701172 L731 -964.666687011719 L69 -964.666687011719 Z" />
+		<path class="effekt-sash" data-name="VSR." data-title="TA-VVU-055K" data-coating="TR9010" data-points="30.000000000000114,1470 : 69,1470 : 69,964.666687011719 : 30,964.666687011719 : 30.000000000000114,1470" d="M30.000000000000114 -1470 L69 -1470 L69 -964.666687011719 L30 -964.666687011719 L30.000000000000114 -1470 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="731,1018.66668701172 : 69,1018.66668701172 : 69,1003.66668701172 : 731,1003.66668701172" d="M731 -1018.66668701172 L69 -1018.66668701172 L69 -1003.66668701172 L731 -1003.66668701172 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="716,1416 : 715.9999999999999,1018.66668701172 : 731,1018.66668701172 : 731,1431" d="M716 -1416 L715.9999999999999 -1018.66668701172 L731 -1018.66668701172 L731 -1431 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="84.00000000000011,1416 : 716,1416 : 731,1431 : 69,1431" d="M84.00000000000011 -1416 L716 -1416 L731 -1431 L69 -1431 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="84,1018.66668701172 : 84.00000000000011,1416 : 69,1431 : 69,1018.66668701172" d="M84 -1018.66668701172 L84.00000000000011 -1416 L69 -1431 L69 -1018.66668701172 Z" />
+		<polyline class="opening out" points="30 -964.666687011719 770 -1217.3333435058594 30 -1470" />
+	</g>
+	<ellipse class="dropshadow" cx="400" cy="200" rx="560" ry="100" fill="url(#grad1)" />
+	<g class="measurement">
+		<line x1="0" y1="-1700" x2="800" y2="-1700" />
+		<text x="400" y="-1700" transform="rotate(0,400,-1700)">800</text>
+		<use href="#MeasureArrow" x="0" y="-1720" transform="rotate(0,0,-1700)" />
+		<use href="#MeasureArrow" x="800" y="-1720" transform="rotate(180,800,-1700)" />
+	</g>
+	<g class="measurement">
+		<line x1="1000" y1="-1500" x2="1000" y2="-0" />
+		<text x="1000" y="-750" transform="rotate(270,1000,-750)">1500</text>
+		<use href="#MeasureArrow" x="1000" y="-1520" transform="rotate(90,1000,-1500)" />
+		<use href="#MeasureArrow" x="1000" y="-20" transform="rotate(270,1000,-0)" />
+	</g>
+	<g class="measurement">
+		<line x1="900" y1="-0" x2="900" y2="-1500" />
+		<use href="#MeasureCircle" x="880" y="-20" />
+		<use href="#MeasureArrow" x="900" y="-967.666687011719" transform="rotate(90,900,-947.666687011719)" />
+		<text x="900" y="-473.8333435058595" transform="rotate(270,900,-473.8333435058595)">948</text>
+		<use href="#MeasureArrow" x="900" y="-1520" transform="rotate(90,900,-1500)" />
+		<text x="900" y="-1223.8333435058594" transform="rotate(270,900,-1223.8333435058594)">552</text>
+	</g>
+	<defs>
+		<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+			<stop offset="0%" style="stop-color:rgb(100,100,100);stop-opacity:0.5" />
+			<stop offset="100%" style="stop-color:rgb(100,100,100);stop-opacity:0" />
+		</radialGradient>
+		<pattern id="pattern-stripe90" width="80" height="80" patternUnits="userSpaceOnUse">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe90">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe45)" />
+		</mask>
+		<pattern id="pattern-stripe45" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe45">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe45)" />
+		</mask>
+		<pattern id="pattern-stripe135" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe135">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe135)" />
+		</mask>
+		<pattern id="pattern-dots" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+			<rect width="10" height="10" fill="black" />
+			<circle cx="1" cy="1" r="1" fill="#000"/>
+		</pattern>
+		<mask id="mask-dot">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-dot)" />
+		</mask>
+		<pattern id="pattern-chevron" width="80" height="80" patternUnits="userSpaceOnUse">
+			<g id="chevron">
+				<path class="left" d="M0 0l5 3v5l-5 -3z"></path>
+				<path class="right" d="M10 0l-5 3v5l5 -3"></path>
+			</g>
+			<use x="0" y="9" href="#chevron"></use>
+		</pattern>
+		<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-chevron)"></rect>
+		<pattern id="pattern-fishbone" x="-30" width="1100" height="100" patternUnits="userSpaceOnUse">
+			<line x1="0" y1="100" x2="100" y2="0"/>
+			<line x1="100" y1="100" x2="200" y2="0"/>
+			<line x1="200" y1="100" x2="300" y2="0"/>
+			<line x1="300" y1="100" x2="400" y2="0"/>
+			<line x1="400" y1="100" x2="500" y2="0"/>
+			<line x1="500" y1="100" x2="600" y2="0"/>
+			<line x1="600" y1="0" x2="600" y2="100"/>
+			<line x1="600" y1="0" x2="700" y2="100"/>
+			<line x1="700" y1="0" x2="800" y2="100"/>
+			<line x1="800" y1="0" x2="900" y2="100"/>
+			<line x1="900" y1="0" x2="1000" y2="100"/>
+			<line x1="1000" y1="0" x2="1100" y2="100"/>
+		</pattern>
+		<filter id="blurry" x="0%" y="0%" height="100%" width="100%" primitiveUnits="userSpaceOnUse">
+			<feGaussianBlur stdDeviation="5" in="SourceGraphic" result="blurSquares"></feGaussianBlur>
+			<feComponentTransfer in="blurSquares" result="opaqueBlur">
+				<feFuncA type="linear" intercept="1"></feFuncA>
+			</feComponentTransfer>
+			<feBlend mode="normal" in="opaqueBlur" in2="SourceGraphic"></feBlend>
+		</filter>
+	</defs>
+</svg>

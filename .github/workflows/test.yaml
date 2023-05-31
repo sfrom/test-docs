@@ -1,0 +1,23 @@
+name: testing
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - feature**
+
+jobs:
+  buildtest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check out
+        uses: actions/checkout@v3
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: Unit Tests
+        run: dotnet test --filter Category!=DevIntegration

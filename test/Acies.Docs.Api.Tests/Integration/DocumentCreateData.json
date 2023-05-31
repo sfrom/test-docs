@@ -1,0 +1,34 @@
+﻿{
+  "templateId": "707e5074-dc51-486e-9b8a-a45cfbae8c0c",
+  "templateVersion": 1,
+  "input": {
+    "data": {
+      "name": "Peter",
+      "orderNumber": "003412",
+      "positions": [
+        {
+          "pos": 1,
+          "description": "Dannebrog vindue",
+          "width": 1200,
+          "height": 1000,
+          "quantity": 2,
+          "itemPrice": 1288.80
+        },
+        {
+          "pos": 2,
+          "description": "Fast karm vindue",
+          "width": 800,
+          "height": 1000,
+          "quantity": 5,
+          "itemPrice": 1143.25
+        }
+      ]
+    },
+    "default": "da"
+  },
+  "tags": {
+    "type": "order",
+    "subtype": "customorder",
+    "number": "084387"
+  }
+}

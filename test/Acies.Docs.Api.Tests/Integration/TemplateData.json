@@ -1,0 +1,123 @@
+﻿{
+  "name": "Peters template",
+  "input": {
+    "validation": {
+      "$schema": "http://json-schema.org/draft-07/schema",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "orderNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "drawingUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "translation": {
+          "type": "object",
+          "$comment": "Optional object for translation via defaults",
+          "properties": {
+            "header": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "Order number"
+                }
+              },
+              "additionalProperties": false,
+              "required": []
+            }
+          },
+          "additionalProperties": false,
+          "required": []
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "orderNumber",
+        "drawingUrl"
+      ]
+    },
+    "defaults": [
+      {
+        "name": "da",
+        "value": {
+          "translation": {
+            "header": {
+              "title": "Ordrenummer"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "type": "static",
+      "name": "{{ orderNumber }}-terms.pdf",
+      "asset": {
+        "uri": "/docs/assets/1234",
+        "path": "docs/terms.pdf"
+      },
+      "tags": {
+        "Name": "Terms"
+      }
+    },
+    {
+      "type": "pdf",
+      "name": "{{ orderNumber }}",
+      "layout": {
+        "format": "A4",
+        "margin": {
+          "top": 30,
+          "bottom": 50,
+          "left": 0,
+          "right": 0
+        },
+        "body": {
+          "html": "<h1>Hi, {{ name }}</h1><div><img src=\"/images/acies-logo.png\"/><svg src=\"{{ drawingUrl }}\"></svg></div><div v-for=\"index in 100\">{{ index }}</div>",
+          "style": ".break-after{break-after:always;page-break-after:always;",
+          "filename": "index.html(ved upload af samlet zip)"
+        },
+        "header": {
+          "html": "<div style=\"color: lightgray; font-size: 10px; border-bottom: solid lightgray 1px; width: 100%;\">{{ translation.header.title || \"Order number\" }} {{ orderNumber }}</div>",
+          "style": "#header { padding: 0 !important; }",
+          "filename": "header.html(ved upload af samlet zip)"
+        },
+        "footer": {
+          "html": "<div style=\"color: lightgray; border-top: solid lightgray 1px; font-size: 10px; padding: 5px; text-align: center; width: 100%;\"><span class=\"pageNumber\"></span>/<span class=\"totalPages\"></span></div>",
+          "style": "#footer { padding: 0 !important; }",
+          "filename": "footer.html(ved upload af samlet zip)"
+        },
+        "assets": [
+          {
+            "asset": {
+              "uri": "docs/docs/1234",
+              "path": "images/acies-logo.png"
+            }
+          }
+        ]
+      },
+      "tags": {
+        "Name": "PDF"
+      }
+    },
+    {
+      "type": "png",
+      "name": "{{ orderNumber }}"
+    }
+  ],
+  "tags": {
+    "Type": "Order",
+    "Subtype": "EndCustomer",
+    "Department": "Struer"
+  },
+  "defaultVersion":  "^1.0.1"
+}

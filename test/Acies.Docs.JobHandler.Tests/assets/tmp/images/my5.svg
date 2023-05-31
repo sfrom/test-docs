@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -2500 1250 2600">
+	<symbol id="MeasureArrow" width="100" height="100" viewBox="0 -20 100 100">
+		<path d="M0 0 L50 20 L50 -20 Z" />
+	</symbol>
+	<symbol id="MeasureCircle" width="40" height="40" viewBox="-20 -20 40 40">
+		<circle cx="0" cy="0" r="20" />
+	</symbol>
+	<filter id="blurfilter" width="100%" height="100%">
+		<feGaussianBlur stdDeviation="10" />
+	</filter>
+	<g data-frameid="0">
+		<path class="frame" data-name="HSK." data-title="TA-KHI-120K" data-coating="TR9010" data-points="950.0000000000001,42 : 908,42 : 908,1918.8060525154535 : 950,1886.35874802581 : 950.0000000000001,42" d="M950.0000000000001 -42 L908 -42 L908 -1918.8060525154535 A743.078125 743.078125 0 0 1 950 -1886.35874802581 L950.0000000000001 -42 Z" />
+		<path class="frame" data-name="OVK." data-title="TA-KOI-120S" data-coating="TR9010" data-points="950,1940 : 950,1886.35874802581 : 0,1886.35874802581 : 0,1940 : 950,1940" d="M950 -1940 L950 -1886.35874802581 A743.078125 743.078125 0 0 0 0 -1886.35874802581 L0 -1940 A785.078125 785.078125 0 0 1 950 -1940 Z" />
+		<path class="frame" data-name="UNK." data-title="TA-KUIM120S" data-coating="TR9010" data-points="0,0 : 0,42 : 950.0000000000001,42 : 950.0000000000001,0 : 0,0" d="M0 -0 L0 -42 L950.0000000000001 -42 L950.0000000000001 -0 L0 -0 Z" />
+		<path class="frame" data-name="VSK." data-title="TA-KVI-120K" data-coating="TR9010" data-points="0,1886.35874802581 : 42,1918.8060525154533 : 42,42 : 0,42 : 0,1886.35874802581" d="M0 -1886.35874802581 A743.0781249999999 743.0781249999999 0 0 1 42 -1918.8060525154533 L42 -42 L0 -42 L0 -1886.35874802581 Z" />
+		<path class="effekt-frame" data-name="HSK." data-title="TA-KHI-120K" data-coating="TR9010" data-points="949.9999999999999,26 : 924,26 : 924,1926.9664810978854 : 950,1907.0152796698335 : 949.9999999999999,26" d="M949.9999999999999 -26 L924 -26 L924 -1926.9664810978854 A759.0781249999997 759.0781249999997 0 0 1 950 -1907.0152796698335 L949.9999999999999 -26 Z" />
+		<path class="effekt-frame" data-name="OVK." data-title="TA-KOI-120S" data-coating="TR9010" data-points="950,1939.9999999999995 : 950,1907.0152796698335 : 0,1907.015279669834 : 0,1940 : 950,1939.9999999999995" d="M950 -1939.9999999999995 L950 -1907.0152796698335 A759.0781250000001 759.0781250000001 0 0 0 0 -1907.015279669834 L0 -1940 A785.0781249999997 785.0781249999997 0 0 1 950 -1939.9999999999995 Z" />
+		<path class="effekt-frame" data-name="UNK." data-title="TA-KUIM120S" data-coating="TR9010" data-points="0,2.2737367544323206E-13 : 0,26 : 949.9999999999999,26 : 949.9999999999999,0 : 0,2.2737367544323206E-13" d="M0 -2.2737367544323206E-13 L0 -26 L949.9999999999999 -26 L949.9999999999999 -0 L0 -2.2737367544323206E-13 Z" />
+		<path class="effekt-frame" data-name="VSK." data-title="TA-KVI-120K" data-coating="TR9010" data-points="0,1907.015279669834 : 26,1926.9664810978852 : 26,26 : 0,26 : 0,1907.015279669834" d="M0 -1907.015279669834 A759.0781249999999 759.0781249999999 0 0 1 26 -1926.9664810978852 L26 -26 L0 -26 L0 -1907.015279669834 Z" />
+	</g>
+	<g data-frameid="1">
+		<path class="sash" data-name="HSR." data-title="TA-DHI-115K" data-coating="TR9010" data-points="920,30 : 805,30 : 805,1994.0705883562985 : 920,1924.9366083085617 : 920,30" d="M920 -30 L805 -30 L805 -1994.0705883562985 A755.078125 755.078125 0 0 1 920 -1924.9366083085617 L920 -30 Z" />
+		<path class="sash" data-name="OVR." data-title="TA-DOI-115K" data-coating="TR9010" data-points="805,1994.0705883562985 : 805,1863.3742485963912 : 145,1863.3742485963915 : 145,1994.0705883562985 : 805,1994.0705883562985" d="M805 -1994.0705883562985 L805 -1863.3742485963912 A640.0781250000001 640.0781250000001 0 0 0 145 -1863.3742485963915 L145 -1994.0705883562985 A755.078125 755.078125 0 0 1 805 -1994.0705883562985 Z" />
+		<path class="sash" data-name="UNR." data-title="TA-DUI-115K" data-coating="TR9010" data-points="145,30 : 145,145 : 805,145 : 805,30 : 145,30" d="M145 -30 L145 -145 L805 -145 L805 -30 L145 -30 Z" />
+		<path class="sash" data-name="VSR." data-title="TA-DVI-115K" data-coating="TR9010" data-points="30,1924.9366083085617 : 145,1994.0705883562985 : 145,30 : 30,30.000000000000227 : 30,1924.9366083085617" d="M30 -1924.9366083085617 A755.078125 755.078125 0 0 1 145 -1994.0705883562985 L145 -30 L30 -30.000000000000227 L30 -1924.9366083085617 Z" />
+		<path class="clearances" data-name="1:1" data-coating="GL-224E04" data-points="129,129 : 821,129 : 821,1872.34680175781 : 129,1872.34680175781 : 129,129" data-glassarea="1.233 m2" d="M129 -129 L821 -129 L821 -1872.34680175781 A656.0781576694577 656.0781576694577 0 0 0 129 -1872.34680175781 L129 -129 Z" />
+		<path class="clearances-overlay" data-filltype="Glass" data-name="1:1" data-coating="GL-224E04" data-points="129,129 : 821,129 : 821,1872.34680175781 : 129,1872.34680175781 : 129,129" data-glassarea="1.233 m2" d="M129 -129 L821 -129 L821 -1872.34680175781 A656.0781576694577 656.0781576694577 0 0 0 129 -1872.34680175781 L129 -129 Z" />
+		<path class="effekt-sash" data-name="HSR." data-title="TA-DHI-115K" data-coating="TR9010" data-points="920,30 : 821,30 : 821,1986.0604410603298 : 920,1924.9366083085613 : 920,30" d="M920 -30 L821 -30 L821 -1986.0604410603298 A755.0781249999997 755.0781249999997 0 0 1 920 -1924.9366083085613 L920 -30 Z" />
+		<path class="effekt-sash" data-name="OVR." data-title="TA-DOI-115K" data-coating="TR9010" data-points="821,1986.0604410603298 : 821,1872.3467633065015 : 129,1872.3467633065013 : 129,1986.0604410603296 : 821,1986.0604410603298" d="M821 -1986.0604410603298 L821 -1872.3467633065015 A656.0781249999999 656.0781249999999 0 0 0 129 -1872.3467633065013 L129 -1986.0604410603296 A755.078125 755.078125 0 0 1 821 -1986.0604410603298 Z" />
+		<path class="effekt-sash" data-name="UNR." data-title="TA-DUI-115K" data-coating="TR9010" data-points="129,29.999999999999773 : 129,129 : 821,129 : 821,30 : 129,29.999999999999773" d="M129 -29.999999999999773 L129 -129 L821 -129 L821 -30 L129 -29.999999999999773 Z" />
+		<path class="effekt-sash" data-name="VSR." data-title="TA-DVI-115K" data-coating="TR9010" data-points="30,1924.9366083085617 : 129,1986.0604410603296 : 129,29.999999999999773 : 30,30.000000000000227 : 30,1924.9366083085617" d="M30 -1924.9366083085617 A755.0781249999999 755.0781249999999 0 0 1 129 -1986.0604410603296 L129 -29.999999999999773 L30 -30.000000000000227 L30 -1924.9366083085617 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="821,144 : 129,144 : 129,129 : 821,129" d="M821 -144 L129 -144 L129 -129 L821 -129 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="806,1863.9393649225583 : 806,144 : 821,144 : 821,1872.34680175781" d="M806 -1863.9393649225583 L806 -144 L821 -144 L821 -1872.34680175781 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="144,1863.939364922558 : 806,1863.9393649225583 : 821,1872.34680175781 : 129,1872.34680175781" d="M144 -1863.939364922558 A641.0781576694579 641.0781576694579 0 0 1 806 -1863.9393649225583 L821 -1872.34680175781 A656.0781576694577 656.0781576694577 0 0 0 129 -1872.34680175781 Z" />
+		<path class="glasslist" data-name="GLST." data-title="GlassList" data-coating="TR9010" data-points="144,144 : 144,1863.939364922558 : 129,1872.34680175781 : 129,144" d="M144 -144 L144 -1863.939364922558 L129 -1872.34680175781 L129 -144 Z" />
+		<polyline class="opening out" points="30 -30.000000000000227 920 -977.4683227539051 30 -1924.93664550781" />
+	</g>
+	<ellipse class="dropshadow" cx="475" cy="200" rx="665" ry="100" fill="url(#grad1)" />
+	<g class="measurement">
+		<line x1="0" y1="-2300" x2="950" y2="-2300" />
+		<text x="475" y="-2300" transform="rotate(0,475,-2300)">950</text>
+		<use href="#MeasureArrow" x="0" y="-2320" transform="rotate(0,0,-2300)" />
+		<use href="#MeasureArrow" x="950" y="-2320" transform="rotate(180,950,-2300)" />
+	</g>
+	<g class="measurement">
+		<line x1="1150" y1="-2100" x2="1150" y2="-0" />
+		<text x="1150" y="-1050" transform="rotate(270,1150,-1050)">2100</text>
+		<use href="#MeasureArrow" x="1150" y="-2120" transform="rotate(90,1150,-2100)" />
+		<use href="#MeasureArrow" x="1150" y="-20" transform="rotate(270,1150,-0)" />
+	</g>
+	<defs>
+		<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+			<stop offset="0%" style="stop-color:rgb(100,100,100);stop-opacity:0.5" />
+			<stop offset="100%" style="stop-color:rgb(100,100,100);stop-opacity:0" />
+		</radialGradient>
+		<pattern id="pattern-stripe90" width="80" height="80" patternUnits="userSpaceOnUse">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe90">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe45)" />
+		</mask>
+		<pattern id="pattern-stripe45" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe45">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe45)" />
+		</mask>
+		<pattern id="pattern-stripe135" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+			<rect width="1" height="80" transform="translate(0,0)" fill="black"></rect>
+		</pattern>
+		<mask id="mask-stripe135">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-stripe135)" />
+		</mask>
+		<pattern id="pattern-dots" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+			<rect width="10" height="10" fill="black" />
+			<circle cx="1" cy="1" r="1" fill="#000"/>
+		</pattern>
+		<mask id="mask-dot">
+			<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-dot)" />
+		</mask>
+		<pattern id="pattern-chevron" width="80" height="80" patternUnits="userSpaceOnUse">
+			<g id="chevron">
+				<path class="left" d="M0 0l5 3v5l-5 -3z"></path>
+				<path class="right" d="M10 0l-5 3v5l5 -3"></path>
+			</g>
+			<use x="0" y="9" href="#chevron"></use>
+		</pattern>
+		<rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-chevron)"></rect>
+		<pattern id="pattern-fishbone" x="-30" width="1100" height="100" patternUnits="userSpaceOnUse">
+			<line x1="0" y1="100" x2="100" y2="0"/>
+			<line x1="100" y1="100" x2="200" y2="0"/>
+			<line x1="200" y1="100" x2="300" y2="0"/>
+			<line x1="300" y1="100" x2="400" y2="0"/>
+			<line x1="400" y1="100" x2="500" y2="0"/>
+			<line x1="500" y1="100" x2="600" y2="0"/>
+			<line x1="600" y1="0" x2="600" y2="100"/>
+			<line x1="600" y1="0" x2="700" y2="100"/>
+			<line x1="700" y1="0" x2="800" y2="100"/>
+			<line x1="800" y1="0" x2="900" y2="100"/>
+			<line x1="900" y1="0" x2="1000" y2="100"/>
+			<line x1="1000" y1="0" x2="1100" y2="100"/>
+		</pattern>
+		<filter id="blurry" x="0%" y="0%" height="100%" width="100%" primitiveUnits="userSpaceOnUse">
+			<feGaussianBlur stdDeviation="5" in="SourceGraphic" result="blurSquares"></feGaussianBlur>
+			<feComponentTransfer in="blurSquares" result="opaqueBlur">
+				<feFuncA type="linear" intercept="1"></feFuncA>
+			</feComponentTransfer>
+			<feBlend mode="normal" in="opaqueBlur" in2="SourceGraphic"></feBlend>
+		</filter>
+	</defs>
+</svg>

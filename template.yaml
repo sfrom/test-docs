@@ -1,0 +1,464 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: Acies Core Docs Service
+
+Parameters:
+  ServiceName:
+    Type: String
+    Description: Service name (use default)
+    Default: docs
+
+  Environment:
+    Type: String
+    AllowedValues:
+      - local
+      - dev
+      - test
+      - play
+      - prod
+    Default: dev
+
+  Version:
+    Type: String
+
+  LogLevel:
+    Type: String
+    AllowedValues:
+      - debug
+      - info
+      - error
+      - critical
+    Default: critical
+
+  DebugRate:
+    Type: Number
+    Description: Chance of debugging
+    Default: 0
+    MinValue: 0
+    MaxValue: 1
+
+  KeyAuthorizer: # function name
+    Type: String
+
+  KeyAuthorizerExecuteRole: # role arn
+    Type: String
+
+  APIDomain:
+    Type: String
+    Default: "NONE"
+
+  APIStage:
+    Type: String
+    Default: "LATEST"
+
+  SNS:
+    Type: String
+    Description: Shared SNS between services
+    Default: NONE
+
+Conditions:
+  APIIsGlobal: !Not [!Equals [!Ref APIDomain, "NONE"]]
+
+  IsLocal: !Equals
+    - !Ref Environment
+    - local
+
+  IsProd: !Equals
+    - !Ref Environment
+    - prod
+
+Globals:
+  Function:
+    Tracing: Active
+    Environment:
+      Variables:
+        ENVIRONMENT: !Ref Environment
+        API: !Ref APIDomain
+        SERVICENAME: !Ref ServiceName
+        VERSION: !Ref Version
+        DEBUG_RATE: !Ref DebugRate
+        LOG_LEVEL: !Ref LogLevel
+
+Resources:
+  AssetsUploadBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      ObjectLockEnabled: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+          - Status: Enabled
+            ExpirationInDays: 1
+      NotificationConfiguration:
+        QueueConfigurations:
+          - Event: s3:ObjectCreated:Put
+            Queue: !GetAtt AssetsUploadBucketSQS.Arn
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - Content-Type
+              - Authorization
+              - Content-Length
+              - Cache-Control
+              - X-Requested-With
+              - x-version
+              - x-account-id
+              - x-amz-meta-accountid
+            AllowedMethods:
+              - PUT
+              - POST
+            AllowedOrigins:
+              - "*"
+            MaxAge: 3600
+   
+  AssetsUploadBucketSQSPermission:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action: sqs:SendMessage
+            Resource: !GetAtt AssetsUploadBucketSQS.Arn
+            Principal:
+              Service: s3.amazonaws.com
+      Queues:
+        - !Ref AssetsUploadBucketSQS
+        
+  AssetsUploadBucketSQS:
+    Type: AWS::SQS::Queue
+    Properties:
+      MessageRetentionPeriod: 86400
+      VisibilityTimeout: 600
+
+  AssetsUpload:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Acies.Docs.JobHandler::Acies.Docs.JobHandler.JobHandler::FunctionHandlerS3
+      Runtime: dotnet6
+      CodeUri: "./src/Acies.Docs.JobHandler"
+      Timeout: 30
+      MemorySize: 1024
+      Environment:
+        Variables:
+          ENVIRONMENT: !Ref Environment
+          DynamoDbDataRepositoryOptions__TABLE: !Ref DocsTable
+          SNS: !Ref SNS
+          SERVICENAME: !Ref ServiceName
+          VERSION: !Ref Version
+          DEBUG_RATE: !Ref DebugRate
+          LOG_LEVEL: !Ref LogLevel
+          RESOURCE_BUCKET: !Ref GeneratedResourceBucket
+          ASSETS_BUCKET: !Ref AssetsBucket
+          ASSETS_UPLOAD_BUCKET: !Ref AssetsUploadBucket
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+                - s3:DeleteObject
+                - s3:ListBucket
+              Resource:
+                - !Sub "arn:aws:s3:::${AssetsUploadBucket}/*"
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource:
+                - !Sub "arn:aws:s3:::${AssetsBucket}/*"
+      Events:
+        Queue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt AssetsUploadBucketSQS.Arn
+            BatchSize: 1
+            Enabled: true
+      
+  GeneratedResourceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      ObjectLockEnabled: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  AssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      ObjectLockEnabled: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  DocsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+        - AttributeName: GSI1PK
+          AttributeType: S
+        - AttributeName: GSI1SK
+          AttributeType: S
+        - AttributeName: GSI2PK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: AccountId
+          KeySchema:
+            - AttributeName: GSI2PK
+              KeyType: HASH
+            - AttributeName: PK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: KEYS_ONLY
+        - IndexName: Versions
+          KeySchema:
+            - AttributeName: GSI1PK
+              KeyType: HASH
+            - AttributeName: GSI1SK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      BillingMode: PAY_PER_REQUEST
+      SSESpecification:
+        SSEEnabled: !If [IsProd, true, false]
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+
+  DocsApiHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Acies.Docs.Api::Acies.Docs.Api.LambdaEntryPoint::FunctionHandlerAsync
+      Runtime: dotnet6
+      CodeUri: "./src/Acies.Docs.Api"
+      MemorySize: 1024
+      Timeout: 10
+      Events:
+        HttpRequest:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+            RestApiId: !Ref ApiGateway
+      Environment:
+        Variables:
+          DynamoDbDataRepositoryOptions__TABLE: !Ref DocsTable
+          SNS: !Ref SNS
+          RESOURCE_BUCKET: !Ref GeneratedResourceBucket
+          ASSETS_BUCKET: !Ref AssetsBucket
+          ASSETS_UPLOAD_BUCKET: !Ref AssetsUploadBucket
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: "2012-10-17"
+          Statement:
+            - Action:
+                - "sns:Publish"
+              Resource: !Ref SNS
+              Effect: Allow
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:DescribeTable
+                - dynamodb:Query
+                - dynamodb:UpdateItem
+                - dynamodb:PutItem
+              Resource:
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}"
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}/index/*"
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource:
+                - !Sub "arn:aws:s3:::${GeneratedResourceBucket}/*"
+                - !Sub "arn:aws:s3:::${AssetsBucket}/*"
+                - !Sub "arn:aws:s3:::${AssetsUploadBucket}/*"
+
+  ListenerHandlerDocumentVersionStatusPending:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Acies.Docs.JobHandler::Acies.Docs.JobHandler.JobHandler::FunctionHandler
+      Description: Update document version status and trigger output generation
+      Runtime: dotnet6
+      CodeUri: "./src/Acies.Docs.JobHandler"
+      MemorySize: 1024
+      Timeout: 30 # function timeout
+      Environment:
+        Variables:
+          DynamoDbDataRepositoryOptions__TABLE: !Ref DocsTable
+          SNS: !Ref SNS
+          SERVICENAME: !Ref ServiceName
+          VERSION: !Ref Version
+          DEBUG_RATE: !Ref DebugRate
+          LOG_LEVEL: !Ref LogLevel
+          RESOURCE_BUCKET: !Ref GeneratedResourceBucket
+          ASSETS_BUCKET: !Ref AssetsBucket
+          ASSETS_UPLOAD_BUCKET: !Ref AssetsUploadBucket
+      Events:
+        Event:
+          Type: SNS
+          Properties:
+            Topic: !Ref SNS
+            FilterPolicy:
+              Service:
+                - docs
+              Resource:
+                - DocumentVersion
+              Event:
+                - Updated
+              Status:
+                - Pending
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: "2012-10-17"
+          Statement:
+            - Action:
+                - "sns:Publish"
+              Resource: !Ref SNS
+              Effect: Allow
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:DescribeTable
+                - dynamodb:Query
+                - dynamodb:UpdateItem
+                - dynamodb:PutItem
+              Resource:
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}"
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}/index/*"
+
+  ListenerHandlerGeneratorOutputStatusPending:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Acies.Docs.JobHandler::Acies.Docs.JobHandler.JobHandler::FunctionHandler
+      Description: Generate pdf document output
+      Runtime: dotnet6
+      CodeUri: "./src/Acies.Docs.JobHandler"
+      MemorySize: 1024
+      Timeout: 60 # function timeout
+      Environment:
+        Variables:
+          ENVIRONMENT: !Ref Environment
+          DynamoDbDataRepositoryOptions__TABLE: !Ref DocsTable
+          SNS: !Ref SNS
+          SERVICENAME: !Ref ServiceName
+          VERSION: !Ref Version
+          DEBUG_RATE: !Ref DebugRate
+          LOG_LEVEL: !Ref LogLevel
+          RESOURCE_BUCKET: !Ref GeneratedResourceBucket
+          ASSETS_BUCKET: !Ref AssetsBucket
+      Events:
+        Event:
+          Type: SNS
+          Properties:
+            Topic: !Ref SNS
+            FilterPolicy:
+              Service:
+                - docs
+              Resource:
+                - OutputGenerator
+              Event:
+                - Updated
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Version: "2012-10-17"
+          Statement:
+            - Action:
+                - "sns:Publish"
+              Resource: !Ref SNS
+              Effect: Allow
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:DescribeTable
+                - dynamodb:Query
+                - dynamodb:UpdateItem
+                - dynamodb:PutItem
+              Resource:
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}"
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DocsTable}/index/*"
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+                - s3:GetObject
+                - s3:ListBucket
+              Resource:
+                - !Sub "arn:aws:s3:::${GeneratedResourceBucket}/*"
+                - !Sub "arn:aws:s3:::${AssetsBucket}/*"
+                - !Sub "arn:aws:s3:::${AssetsBucket}"
+
+  APIMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Condition: APIIsGlobal
+    Properties:
+      RestApiId: !Ref ApiGateway
+      DomainName: !Ref APIDomain
+      BasePath: !Ref ServiceName
+      Stage: !Ref ApiGateway.Stage
+
+  ApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref APIStage
+      EndpointConfiguration: EDGE
+      OpenApiVersion: 3.0.1
+      # ApiKeySourceType: HEADER
+      MinimumCompressionSize: 10 # bytes
+      TracingEnabled: true
+      MethodSettings:
+        - HttpMethod: "*"
+          LoggingLevel: ERROR
+          ResourcePath: "/*"
+          DataTraceEnabled: false
+          MetricsEnabled: false
+      GatewayResponses: # doesn't work with sam local
+        DEFAULT_4XX:
+          ResponseTemplates:
+            "application/json": '{"error":{"message":$context.error.messageString}}'
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: "'*'"
+        DEFAULT_5XX:
+          ResponseTemplates:
+            "application/json": '{"error":{"message":$context.error.messageString}}'
+          ResponseParameters:
+            Headers:
+              Access-Control-Allow-Origin: "'*'"
+      Auth:
+        DefaultAuthorizer: keyAuthorizer
+        Authorizers:
+          keyAuthorizer:
+            FunctionArn:
+              !If [
+                IsLocal,
+                !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${KeyAuthorizer}",
+                !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${KeyAuthorizer}:live",
+              ]
+            FunctionInvokeRole: !Ref KeyAuthorizerExecuteRole
+            FunctionPayloadType: REQUEST
+            Identity:
+              Headers:
+                - Authorization
+              ReauthorizeEvery: 300
+        AddDefaultAuthorizerToCorsPreflight: false
+      Cors:
+        AllowOrigin: "'*'"
+        AllowMethods: "'GET,POST,PATCH,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,Authorization,Content-Length,Cache-Control,X-Requested-With,x-version,x-account-id'"
+
+Outputs:
+  ApiURL:
+    Description: API endpoint URL for Test Function
+    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/${APIStage}/"

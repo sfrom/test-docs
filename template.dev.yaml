@@ -1,0 +1,96 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: "AWS::Serverless-2016-10-31"
+Description: Acies Core Docs - Dev Local Deploy
+
+Parameters:
+  Template:
+    Type: String
+    Default: template.yaml
+
+Resources:
+  TestStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Ref Template
+      Parameters:
+        Environment: local
+        DebugRate: 1
+        LogLevel: debug
+        SNS: !Ref LocalSNS
+        KeyAuthorizer: !Ref Authorize
+        KeyAuthorizerExecuteRole: !GetAtt KeyAuthorizerExecuteRole.Arn
+        Version: 1.0
+      TimeoutInMinutes: 10
+
+  LocalSNS:
+    Type: AWS::SNS::Topic
+
+  Authorize:
+    Type: AWS::Serverless::Function
+    AutoPublishAlias: live
+    Properties:
+      Runtime: nodejs16.x
+      Handler: index.handler
+      Timeout: 10
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      InlineCode: !Sub |
+        exports.handler =  function(event, context, callback) {
+            callback(null, generatePolicy(event));
+        };
+        // Help function to generate an IAM policy.
+        var generatePolicy = function(event) {
+            var authResponse = {};
+            authResponse.principalId = "22o2jau75gr96c7188jq3j1gtt";
+            var policyDocument = {};
+            policyDocument.Version = '2012-10-17'; 
+            policyDocument.Statement = [];
+            var statementOne = {};
+            statementOne.Action = 'execute-api:Invoke'; 
+            statementOne.Effect = "Allow";
+            statementOne.Resource = "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:*/*/*/*";
+            policyDocument.Statement[0] = statementOne;
+            authResponse.policyDocument = policyDocument;
+            authResponse.context = {};
+            authResponse.context.Identity = "76473982-629a-49c0-be7b-2615d17b8da6";
+            authResponse.context.Version = null;
+            authResponse.context.PolicyDocument = "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";
+            authResponse.context.Debug = true;
+            console.log(JSON.stringify(authResponse));
+            return authResponse;
+        }
+  KeyAuthorizerExecuteRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action: sts:AssumeRole
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+      Policies:
+        - PolicyName: InvokeKeyAuthorizer
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeAsync
+                  - lambda:InvokeFunction
+                Resource:
+                  - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Authorize}"
+
+Outputs:
+  Authorizer:
+    Description: Custom Authorizer Lambda ARN
+    Value: !Ref Authorize
+
+  AuthorizerArn:
+    Description: Custom Authorizer Lambda ARN
+    Value: !GetAtt Authorize.Arn
+
+  AuthorizerExecuteRole:
+    Description: Custom Authorizer Lambda Execution Role ARN
+    Value: !GetAtt KeyAuthorizerExecuteRole.Arn
